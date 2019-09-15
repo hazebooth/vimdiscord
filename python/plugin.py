@@ -25,15 +25,15 @@ BASE_ACTIVITY = {
 CLIENT_ID = '622902431029919755'
 
 thumbnails = {
-    'js': 'JavaScript',
-    'py': 'Python',
-    'rs': 'Rust',
-    'md': 'Markdown',
-    'ts': 'TypeScript',
-    'go': 'Go',
-    'hs': 'Haskell',
-    'json': 'JSON',
-    'zig': 'Zig',
+    'js': 'javascript',
+    'py': 'python',
+    'rs': 'rust',
+    'md': 'markdown',
+    'ts': 'typescript',
+    'go': 'go',
+    'hs': 'haskell',
+    'json': 'json',
+    'zig': 'zig',
 }
 
 
