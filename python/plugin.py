@@ -15,49 +15,25 @@ BASE_ACTIVITY = {
         'start': START_TIME
      },
     'assets': {
-        'large_text': 'Vim',
-        'large_image': 'vim_logo',
-        'small_text': 'The one true editor',
-        'small_image': 'vim_logo'
+        'large_text': 'The one true editor',
+        'large_image': 'neovim'
+        # 'small_text': 'The one true editor',
+        # 'small_image': 'neovim2'
      }
  }
 
-CLIENT_ID = '589111267986243624'
+CLIENT_ID = '622902431029919755'
 
 thumbnails = {
-    'html': 'HTML',
-    'css': 'CSS',
     'js': 'JavaScript',
-    'php': 'PHP',
-    'scss': 'Sass',
     'py': 'Python',
     'rs': 'Rust',
-    'c': 'C',
-    'h': 'C Header',
-    'cpp': 'C++',
-    'hpp': 'C++ Header',
-    'cxx': 'C++',
-    'cc': 'C++',
-    'cs': 'C#',
-    'java': 'Java',
-    'ex': 'Elixir',
     'md': 'Markdown',
     'ts': 'TypeScript',
     'go': 'Go',
-    'kt': 'Kotlin',
-    'kts': 'Kotlin',
-    'cr': 'Crystal',
-    'rb': 'Ruby',
-    'clj': 'Clojure',
     'hs': 'Haskell',
     'json': 'JSON',
-    'vue': 'Vue',
-    'groovy': 'Groovy',
-    'swift': 'Swift',
-    'lua': 'Lua',
-    'jl': 'Julia',
-    'dart': 'Dart',
-    'pp': 'Pascal',
+    'zig': 'Zig',
 }
 
 
@@ -73,6 +49,10 @@ def get_cwd():
     return vim.eval('getcwd()')
 
 
+def get_neovim_version():
+    return 'todo'
+
+
 def update_presence(connection):
     if rpc.connection_closed:
         rpc.close(connection)
@@ -84,16 +64,18 @@ def update_presence(connection):
     cwd = get_cwd()
     if not filename or not cwd:
         return
-    
+
     activity['details'] = 'Editing ' + filename
-    activity['assets']['small_text'] = 'Working on project ' + cwd
+    activity['assets']['small_text'] = get_neovim_version()
 
     extension = get_extension()
     if extension and extension in thumbnails.keys():
         activity['assets']['large_image'] = extension
-        activity['assets']['large_text'] = 'Editing a {} file'.format(thumbnails[extension])
+        activity['assets']['large_text'] = \
+            'Editing a {} file'.format(thumbnails[extension])
     else:
-        activity['assets']['large_image'] = 'unknown'
+        activity['assets']['large_image'] = 'neovim'
+        activity['assets']['lage_text'] = f'unknown filetype: {extension}'
 
     try:
         rpc.set_activity(connection, activity)
