@@ -71,6 +71,8 @@ def update_presence(connection):
     # /Users/haze/src/zig-toml
 
     activity['details'] = 'Editing ' + filename
+    project_name = cwd.split('/')[-1]
+    activity['details'] = f'Working on {project_name}'
 
     version = get_neovim_version()
     if version:
