@@ -16,9 +16,9 @@ BASE_ACTIVITY = {
      },
     'assets': {
         'large_text': 'The one true editor',
-        'large_image': 'neovim'
+        'large_image': 'neovim',
+        'small_image': 'neovim2'
         # 'small_text': 'The one true editor',
-        # 'small_image': 'neovim2'
      }
  }
 
@@ -64,8 +64,9 @@ def update_presence(connection):
     cwd = get_cwd()
     if not filename or not cwd:
         return
+    # /Users/haze/src/zig-toml
 
-    activity['details'] = 'Editing ' + filename
+    activity['details'] = 'Editing ' + cwd  # filename
     activity['assets']['small_text'] = get_neovim_version()
 
     extension = get_extension()
