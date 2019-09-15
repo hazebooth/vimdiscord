@@ -54,7 +54,7 @@ def get_cwd():
 
 
 def get_neovim_version():
-    return 'todo'
+    return vim.eval("matchstr(execute('version'), 'NVIM v\\zs[^\\n]*')")
 
 
 def update_presence(connection):
