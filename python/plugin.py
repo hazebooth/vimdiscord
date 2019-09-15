@@ -72,7 +72,7 @@ def update_presence(connection):
 
     activity['details'] = 'Editing ' + cwd  # filename
     activity['assets']['small_text'] = get_neovim_version()
-    activity['assets']['lage_text'] = get_relative_file_path()
+    activity['assets']['large_text'] = get_relative_file_path()
 
     extension = get_extension()
     if extension and extension in thumbnails.keys():
