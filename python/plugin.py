@@ -41,6 +41,10 @@ def get_filename():
     return vim.eval('expand("%:t")')
 
 
+def get_relative_file_path():
+    return vim.eval('expand("%")')
+
+
 def get_extension():
     return vim.eval('expand("%:e")')
 
@@ -68,15 +72,13 @@ def update_presence(connection):
 
     activity['details'] = 'Editing ' + cwd  # filename
     activity['assets']['small_text'] = get_neovim_version()
+    activity['assets']['lage_text'] = get_relative_file_path()
 
     extension = get_extension()
     if extension and extension in thumbnails.keys():
         activity['assets']['large_image'] = extension
-        activity['assets']['large_text'] = \
-            'Editing a {} file'.format(thumbnails[extension])
     else:
         activity['assets']['large_image'] = 'neovim'
-        activity['assets']['lage_text'] = f'unknown filetype: {extension}'
 
     try:
         rpc.set_activity(connection, activity)
