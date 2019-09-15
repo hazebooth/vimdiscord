@@ -81,7 +81,7 @@ def update_presence(connection):
 
     extension = get_extension()
     if extension and extension in thumbnails.keys():
-        activity['assets']['large_image'] = extension
+        activity['assets']['large_image'] = thumbnails[extension]
     else:
         activity['assets']['large_image'] = 'neovim'
 
